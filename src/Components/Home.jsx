@@ -1,13 +1,12 @@
 import React from "react";
-import Searchbar from "./SearchBar/Searchbar.jsx";
-
+import Globalstats from "./LeftPane/Globalstats.jsx";
 
 class Home extends React.Component {
 
     render() {
         return (
             <div className="home_container">
-                <Searchbar />
+               <Globalstats/>
             </div>
         );
     }
