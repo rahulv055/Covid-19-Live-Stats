@@ -1,13 +1,14 @@
 import React from "react";
+import Searchbar from "./SearchBar/Searchbar.jsx";
 
 
-class Home extends React.Component{
+class Home extends React.Component {
 
-    render(){
+    render() {
         return (
-            <React.Fragment>
-            HOME
-            </React.Fragment>
+            <div className="home_container">
+                <Searchbar />
+            </div>
         );
     }
 }

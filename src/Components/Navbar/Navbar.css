@@ -1,0 +1,26 @@
+nav {
+    background: #f7f7f7;
+    height: 80px;
+    width: 100%;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 80px;
+    padding-left:100px;
+}
+
+.local-cases a{
+    float: right;
+    line-height: 80px;
+    font-size: 17px;
+    text-transform: uppercase;
+    padding:0 100px;
+    cursor: pointer;
+    color:#000000
+}
+
+.local-cases a:hover{
+    color:#af9a7d
+}

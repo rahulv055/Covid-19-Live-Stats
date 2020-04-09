@@ -10,7 +10,7 @@ module.exports = {
     },
 
     devServer: {
-        port: 3000,
+        port: 9000,
         historyApiFallback: true
     },
 
@@ -31,6 +31,12 @@ module.exports = {
                 test: /\.html$/,
                 use: {
                     loader: 'html-loader'
+                }
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                use: {
+                    loader: 'file-loader'
                 }
             }
         ]

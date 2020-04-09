@@ -1,16 +1,16 @@
 import React from 'react';
-import { Route,Switch } from "react-router-dom";
-import LoginComponent from './Components/LoginComponent.jsx';
+import { Route, Switch } from "react-router-dom";
+import Navbar from "./Components/Navbar/Navbar.jsx";
 import Home from "./Components/Home.jsx";
 import './App.css';
 
 
 const App = () => (
     <div className='app'>
+        <Navbar />
         <Switch>
-         <Route exact path="/" component={LoginComponent} />
-         <Route path="/Home" component={Home}/>
-         </Switch>
+            <Route exact path="/" component={Home} />
+        </Switch>
     </div>
 )
 
