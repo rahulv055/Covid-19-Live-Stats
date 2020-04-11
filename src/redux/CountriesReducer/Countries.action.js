@@ -10,6 +10,7 @@ export const getCovidDataForAllCountries = () => {
     return async (dispatch) => {
         await axios.get('https://corona.lmao.ninja/countries', config)
             .then(({ data }) => {
+                console.log(Array.isArray(data));
                 dispatch(setCovidDataForAllCountries(data))
             }).catch(error => {
                 console.log(error);
@@ -18,6 +19,31 @@ export const getCovidDataForAllCountries = () => {
 
 }
 
+// export const getCovidDataForSpecificCountry = (country) => {
+//     const config = {
+//         header: {
+//             'Content-Type': 'application/json'
+//         }
+//     };
+
+//     return async dispatch => {
+//         await axios.get(`https://corona.lmao.ninja/countries/${country}`, config)
+//             .then(({ data }) => {
+//                 console.log(data);
+//                 console.log(country);
+//                 dispatch(setCovidDataForSpecificCountry([data]))
+//             }).catch(error => {
+//                 console.log(error);
+//             })
+//     }
+// }
+
+export const getCovidDataForSpecificCountry = data => {
+    return {
+        type: 'SET_COUNTRY_COVID_DATA',
+        payload: data
+    }
+}
 
 const setCovidDataForAllCountries = data => {
     return {
