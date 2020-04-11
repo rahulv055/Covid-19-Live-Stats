@@ -1,5 +1,7 @@
 import React from "react";
-import Globalstats from "./LeftPane/Globalstats.jsx";
+import Globalstats from "../Components/LeftPane/Globalstats.jsx";
+import CountriesComponent from "../Components/CountriesComponent/CountriesComponent.jsx";
+import './Home.css';
 
 class Home extends React.Component {
 
@@ -7,6 +9,7 @@ class Home extends React.Component {
         return (
             <div className="home_container">
                <Globalstats/>
+               <CountriesComponent/>
             </div>
         );
     }

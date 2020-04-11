@@ -1,0 +1,29 @@
+.country-item {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .country-item:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .country-case-details {
+    padding: 0 16px;
+    height: 50%;
+  }
+
+  .countries-data{
+    font-size: 15px;
+    padding:10px 0;
+  }
+
+  .countries-flag-name{
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      height: 50%;
+  }
