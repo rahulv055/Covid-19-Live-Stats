@@ -31,7 +31,7 @@
 }
 
 .select_input:focus{
-    box-shadow:1px 1px 1px 1px rgba(5, 219, 34, 0.726);
+    box-shadow:1px 1px 5px rgba(5, 219, 34, 0.726);
 }
 /* .fa-search{
     position: absolute;
