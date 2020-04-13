@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
     covid19AllCountries: [],
-    searchCovidCountry:[]
+    listOfCountries: []
 }
 
 const CountriesReducer = (state = INITIAL_STATE, action) => {
@@ -9,17 +9,17 @@ const CountriesReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 covid19AllCountries: action.payload,
-                searchCovidCountry:action.payload
             }
 
         case 'SET_COUNTRY_COVID_DATA':
             return {
                 ...state,
-                covid19AllCountries: state.searchCovidCountry.filter(item => {
-                    const itemData = item.country.toUpperCase();
-                    const textData = action.payload.toUpperCase();
-                    return itemData.indexOf(textData) > -1;
-                })
+                covid19AllCountries: action.payload
+            }
+        case 'GET_LIST_OF_COUNTRIES':
+            return {
+                ...state,
+                listOfCountries:state.covid19AllCountries.map(item=>item.country)
             }
         default:
             return state;

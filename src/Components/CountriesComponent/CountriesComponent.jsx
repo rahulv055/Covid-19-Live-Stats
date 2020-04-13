@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux";
 import './Countries.css';
-import Searchbar from '../SearchBar/Searchbar.jsx';
+import CustomSelect from '../CustomSelect/CustomSelect.jsx';
 import CountryItem from "../Country-item/Country-item.jsx";
 import { getCovidDataForAllCountries, getCovidDataForSpecificCountry } from "../../redux/CountriesReducer/Countries.action.js";
 
-const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, getCovidDataForSpecificCountry }) => {
+const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, getCovidDataForSpecificCountry, listOfCountries }) => {
 
     const [country, setCountry] = useState('');
 
     useEffect(() => {
-        getCovidDataForAllCountries();
-    }, []);
+        if (country === '') {
+            getCovidDataForAllCountries();
+        } else {
+            getCovidDataForSpecificCountry(country);
+        }
+    }, [country]);
 
     const onChangeCountry = (e) => {
-        setCountry(e.target.value);
-            getCovidDataForSpecificCountry(country);
+        setCountry(e.target.value)
     }
 
     return (
         <div className="countries-stats-container">
-            <Searchbar type="text" placeholder="Enter the Country" value={country} onChangeCountry={(e) => onChangeCountry(e)} />
+            <CustomSelect onChangeCountry={(e) => onChangeCountry(e)} listOfCountries={listOfCountries} />
             <div className="countries-page">
                 <h2 className="heading"> Countries Affected with COVID-19 </h2>
                 <div className="items">
@@ -37,7 +40,8 @@ const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, 
 }
 
 const mapStateToProps = state => ({
-    covid19AllCountries: state.CountriesReducer.covid19AllCountries
+    covid19AllCountries: state.CountriesReducer.covid19AllCountries,
+    listOfCountries: state.CountriesReducer.listOfCountries
 })
 
 const mapDispatchToProps = dispatch => ({
