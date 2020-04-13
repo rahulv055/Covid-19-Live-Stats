@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { connect } from "react-redux";
 import './Countries.css';
 import CustomSelect from '../CustomSelect/CustomSelect.jsx';
@@ -27,12 +27,13 @@ const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, 
             <div className="countries-page">
                 <h2 className="heading"> Countries Affected with COVID-19 </h2>
                 <div className="items">
-                    {
-                        covid19AllCountries.map((covidCountryData, index) => (
-                            <CountryItem key={index} covidCountryData={covidCountryData} />
-                        ))
-                    }
+                   
+                        {
+                            covid19AllCountries.map((covidCountryData, index) => (
 
+                                <CountryItem key={index} covidCountryData={covidCountryData} />
+                            ))
+                        }
                 </div>
             </div>
         </div>
