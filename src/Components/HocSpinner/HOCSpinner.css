@@ -2,8 +2,8 @@
     border:10px solid lightgrey;
     border-radius: 50%;
     border-top: 10px solid grey;
-    width:100px;
-    height: 100px;
+    width:80px;
+    height: 80px;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
     position: absolute;
