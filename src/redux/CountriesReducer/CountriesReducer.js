@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     covid19AllCountries: [],
-    listOfCountries: []
+    listOfCountries: [],
+    isLoading: true
 }
 
 const CountriesReducer = (state = INITIAL_STATE, action) => {
@@ -19,22 +20,17 @@ const CountriesReducer = (state = INITIAL_STATE, action) => {
         case 'GET_LIST_OF_COUNTRIES':
             return {
                 ...state,
-                listOfCountries:state.covid19AllCountries.map(item=>item.country)
+                listOfCountries: state.covid19AllCountries.map(item => item.country)
+            }
+        case 'LOADING':
+            return {
+                ...state,
+                isLoading: action.payload
             }
         default:
             return state;
     }
 
 }
-
-
-// function updateCountries(covid19AllCountries,covid19Country) {
-//     if (covid19AllCountries && covid19AllCountries.length > 0) {
-//         var arr = [covid19Country];
-//         return arr;
-//     }else{
-
-//     }
-// }
 
 export default CountriesReducer;

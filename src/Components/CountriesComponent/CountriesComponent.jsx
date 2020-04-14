@@ -2,10 +2,12 @@ import React, { useState, useEffect} from 'react';
 import { connect } from "react-redux";
 import './Countries.css';
 import CustomSelect from '../CustomSelect/CustomSelect.jsx';
-import CountryItem from "../Country-item/Country-item.jsx";
+import CountriesContainer from '../CountriesContainer/CountriesContainer.jsx';
+import HocSpinner from "../HocSpinner/HOCSpinner.jsx";
 import { getCovidDataForAllCountries, getCovidDataForSpecificCountry } from "../../redux/CountriesReducer/Countries.action.js";
 
-const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, getCovidDataForSpecificCountry, listOfCountries }) => {
+const CountriesContainerWithSpinner = HocSpinner(CountriesContainer);
+const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, getCovidDataForSpecificCountry, listOfCountries,isLoading }) => {
 
     const [country, setCountry] = useState('');
 
@@ -24,25 +26,16 @@ const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, 
     return (
         <div className="countries-stats-container">
             <CustomSelect onChangeCountry={(e) => onChangeCountry(e)} listOfCountries={listOfCountries} />
-            <div className="countries-page">
-                <h2 className="heading"> Countries Affected with COVID-19 </h2>
-                <div className="items">
-                   
-                        {
-                            covid19AllCountries.map((covidCountryData, index) => (
-
-                                <CountryItem key={index} covidCountryData={covidCountryData} />
-                            ))
-                        }
-                </div>
-            </div>
+            <h2 className="heading"> Countries Affected with COVID-19 </h2>
+            <CountriesContainerWithSpinner isLoading={isLoading} covid19AllCountries={covid19AllCountries} />
         </div>
     )
 }
 
 const mapStateToProps = state => ({
     covid19AllCountries: state.CountriesReducer.covid19AllCountries,
-    listOfCountries: state.CountriesReducer.listOfCountries
+    listOfCountries: state.CountriesReducer.listOfCountries,
+    isLoading:state.CountriesReducer.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({

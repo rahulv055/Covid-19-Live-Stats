@@ -8,11 +8,13 @@ export const getCovidDataForAllCountries = () => {
         }
     };
     return async (dispatch) => {
+        dispatch({type:'LOADING',payload:true})
         await axios.get('https://corona.lmao.ninja/countries', config)
             .then(({ data }) => {
                 console.log(Array.isArray(data));
                 dispatch(setCovidDataForAllCountries(data));
                 dispatch(getlistOfAllCountries());
+                dispatch({type:'LOADING',payload:false})
             }).catch(error => {
                 console.log(error);
             })

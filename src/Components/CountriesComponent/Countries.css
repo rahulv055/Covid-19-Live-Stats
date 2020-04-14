@@ -10,7 +10,7 @@
     left: 25%;
 }
 
-.countries-page{
+.countries-container{
     display: flex;
     flex-direction: column;
     width: 100%;
