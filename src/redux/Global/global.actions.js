@@ -7,7 +7,7 @@ export const getGlobalStats = () => {
         }
     };
     return async (dispatch) => {
-        await axios.get('https://corona.lmao.ninja/all', config)
+        await axios.get('https://corona.lmao.ninja/v2/all', config)
             .then(({ data }) => {
                 dispatch(setGlobalData(data))
             })

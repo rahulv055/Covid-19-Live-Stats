@@ -9,7 +9,7 @@ export const getCovidDataForAllCountries = () => {
     };
     return async (dispatch) => {
         dispatch({type:'LOADING',payload:true})
-        await axios.get('https://corona.lmao.ninja/countries', config)
+        await axios.get('https://corona.lmao.ninja/v2/countries', config)
             .then(({ data }) => {
                 console.log(Array.isArray(data));
                 dispatch(setCovidDataForAllCountries(data));
@@ -30,7 +30,7 @@ export const getCovidDataForSpecificCountry = (country) => {
     };
 
     return async dispatch => {
-        await axios.get(`https://corona.lmao.ninja/countries/${country}` , config)
+        await axios.get(`https://corona.lmao.ninja/v2/countries/${country}` , config)
             .then(({ data }) => {
                 console.log(data);
                 console.log(country);
