@@ -1,5 +1,6 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import './Countries.css';
 import CustomSelect from '../CustomSelect/CustomSelect.jsx';
 import CountriesContainer from '../CountriesContainer/CountriesContainer.jsx';
@@ -7,7 +8,7 @@ import HocSpinner from "../HocSpinner/HOCSpinner.jsx";
 import { getCovidDataForAllCountries, getCovidDataForSpecificCountry } from "../../redux/CountriesReducer/Countries.action.js";
 
 const CountriesContainerWithSpinner = HocSpinner(CountriesContainer);
-const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, getCovidDataForSpecificCountry, listOfCountries,isLoading }) => {
+const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, getCovidDataForSpecificCountry, listOfCountries, isLoading }) => {
 
     const [country, setCountry] = useState('');
 
@@ -35,7 +36,7 @@ const CountriesComponent = ({ covid19AllCountries, getCovidDataForAllCountries, 
 const mapStateToProps = state => ({
     covid19AllCountries: state.CountriesReducer.covid19AllCountries,
     listOfCountries: state.CountriesReducer.listOfCountries,
-    isLoading:state.CountriesReducer.isLoading
+    isLoading: state.CountriesReducer.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -43,5 +44,13 @@ const mapDispatchToProps = dispatch => ({
     getCovidDataForSpecificCountry: (country) => dispatch(getCovidDataForSpecificCountry(country))
 
 })
+
+CountriesComponent.propTypes = {
+    covid19AllCountries: PropTypes.arrayOf(PropTypes.object),
+    listOfCountries: PropTypes.arrayOf(PropTypes.string).isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    getCovidDataForAllCountries:PropTypes.func.isRequired,
+    getCovidDataForSpecificCountry:PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountriesComponent);

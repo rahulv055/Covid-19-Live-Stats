@@ -1,6 +1,6 @@
 import React from 'react';
 import CountryItem from "../Country-item/Country-item.jsx";
-
+import PropTypes from 'prop-types';
 const CountriesContainer = (props) => {
 
     const {covid19AllCountries} = props;
@@ -17,6 +17,10 @@ const CountriesContainer = (props) => {
             </div>
         </div>
     )
+}
+
+CountriesContainer.propTypes = {
+    covid19AllCountries: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default CountriesContainer;
