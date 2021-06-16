@@ -16,7 +16,7 @@ export function* fetchCovidDataForIndianState() {
     try {
         const response = yield axios.get('https://corona-virus-world-and-india-data.p.rapidapi.com/api_india', config);
         const data = yield response.data;
-        console.log(Object.values(data.state_wise));
+        console.log(data.state_wise);
         const stateWiseData = yield call(parseObjectValue,Object.values(data.state_wise));
         yield put(setCovidDataForAllState(stateWiseData));
     } catch (error) {

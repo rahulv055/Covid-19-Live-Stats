@@ -6,8 +6,8 @@ const CountryItem = ({ covidCountryData }) => {
         <>
             <div className="country-item">
                 <div className="countries-flag-name">
-                    <img src={covidCountryData.countryInfo.flag} alt="Avatar" style={{ width: '100%',height:'80%' }} />
-                    <h4 style={{ padding: '10px',height:'20%' }}><b>{covidCountryData.country}</b></h4>
+                    <img src={covidCountryData.countryInfo.flag} alt="Avatar" style={{ width: '100%', height: '80%' }} />
+                    <h4 style={{ padding: '10px', height: '20%' }}><b>{covidCountryData.country}</b></h4>
                 </div>
                 <div className="country-case-details">
                     <div className="countries-data" style={{ color: 'rgb(0, 0, 230)' }}>
@@ -26,6 +26,16 @@ const CountryItem = ({ covidCountryData }) => {
                         <label>Deaths:</label>
                         <span>{covidCountryData.deaths}</span>
                     </div>
+                    <div className="countries-data">
+                        <b> <label>Today Cases:</label>
+                            <span> +{covidCountryData.todayCases}</span></b>
+                    </div>
+                    <div className="countries-data">
+                        <b>  <label>Today Deaths:</label>
+                            <span> +{covidCountryData.todayDeaths}</span>
+                        </b>
+                    </div>
+
                 </div>
             </div>
         </>

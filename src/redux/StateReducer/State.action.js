@@ -13,3 +13,9 @@ export const setCovidDataForAllState = (stateData) => {
         payload: stateData
     }
 }
+
+export const getCasesTimeSeries = ()=>{
+    return {
+        type: stateActionTypes.GET_CASES_TIME_SERIES
+    }
+}

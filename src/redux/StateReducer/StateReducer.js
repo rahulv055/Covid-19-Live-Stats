@@ -1,7 +1,12 @@
 import stateActionTypes from './State.types.js'
 
 const INITIAL_STATE = {
-    stateData: []
+    stateData: [],
+    // caseTimeSeries:[
+    //     { 
+    //         dailyCon
+    //     }
+    // ]
 }
 
 
