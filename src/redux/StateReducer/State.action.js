@@ -1,3 +1,4 @@
+import axios from 'axios';
 import stateActionTypes from './State.types.js';
 
 export const getCovidDataForAllState = () => {
@@ -15,7 +16,29 @@ export const setCovidDataForAllState = (stateData) => {
 }
 
 export const getCasesTimeSeries = ()=>{
-    return {
-        type: stateActionTypes.GET_CASES_TIME_SERIES
+    const config = {
+        header: {
+            'Content-Type': 'application/json'
+        }
+    };
+    return async dispatch => {
+        try {
+            const response = await axios.get("http://localhost:8080/api/indiancasetimeseries", config);
+            console.log(response);
+            const caseTimeSeries = response?.data;
+            console.log(caseTimeSeries);
+            dispatch(setCasesTimeSeries(caseTimeSeries));
+        }catch(error){
+         console.log(error);
+        }
     }
 }
+
+const setCasesTimeSeries = (data) =>{
+    return {
+        type: stateActionTypes.SET_CASES_TIME_SERIES,
+        payload: data
+    }
+}
+
+

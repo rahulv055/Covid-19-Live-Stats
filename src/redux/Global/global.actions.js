@@ -7,7 +7,7 @@ export const getGlobalStats = () => {
         }
     };
     return async (dispatch) => {
-        await axios.get('https://corona.lmao.ninja/v2/all', config)
+        await axios.get('https://disease.sh/v3/covid-19/all', config)
             .then(({ data }) => {
                 dispatch(setGlobalData(data))
             })
