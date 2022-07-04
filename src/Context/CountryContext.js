@@ -25,7 +25,7 @@ export const CountryProvider = ({ children }) => {
                 'Content-Type': 'application/json'
             }
         };
-        await axios.get(`https://corona.lmao.ninja/v2/countries/${state.country}`, config)
+        await axios.get(`https://disease.sh/v3/covid-19/countries/${state.country}`, config)
             .then(({ data }) => {
                 dispatch(setCountryCovidDetails(data))
             }).catch(error => {
